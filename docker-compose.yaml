@@ -2,25 +2,10 @@ services:
   backapp:
     image: backapp-image
     container_name: backapp
-    environment:
-      - CUBIX_HOMEWORK=Tamás
-      - APP_DEFAULT_MESSAGE=backapp
-    networks:
-      - internal
   frontapp:    
     image: frontapp-image
     container_name: frontapp
     environment:
-      - CUBIX_HOMEWORK=Tamás
-      - APP_DEFAULT_MESSAGE=frontapp
       - BACK_URL=http://backapp:8080
     ports:
-      - "8080:8080" # Expose only frontapp to localhost
-    networks:
-     - internal
-    depends_on:
-      - backapp
-
-networks:
-  internal:
-    driver: bridge
+      - "8080:8080" 
